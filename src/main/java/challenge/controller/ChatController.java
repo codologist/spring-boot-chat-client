@@ -50,32 +50,38 @@ public class ChatController {
         }
     }
 
-    @PostMapping("/sendChat/{userId}/text")
-    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody TextMessage message, @PathVariable("userId") String userId){
+    @PostMapping("/sendChat/{userId}/{toUserId}/text")
+    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody TextMessage message,
+                                  @PathVariable("userId") String userId, @PathVariable("toUserId") String toUserId){
         logger.info("Session id:" + sessionID);
         logger.info("userId: " + userId);
         validateSession(Integer.valueOf(userId), sessionID);
         message.setUser_id(Integer.valueOf(userId));
+        message.setTo_user_id(Integer.valueOf(toUserId));
         chatRepository.save(message);
         return "{\"status\" : \"Success\"}";
     }
 
-    @PostMapping("/sendChat/{userId}/image")
-    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody ImageMessage message, @PathVariable("userId") String userId){
+    @PostMapping("/sendChat/{userId}/{toUserId}/image")
+    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody ImageMessage message,
+                                  @PathVariable("userId") String userId, @PathVariable("toUserId") String toUserId){
         logger.info("Session id:" + sessionID);
         logger.info("userId: " + userId);
         validateSession(Integer.valueOf(userId), sessionID);
         message.setUser_id(Integer.valueOf(userId));
+        message.setTo_user_id(Integer.valueOf(toUserId));
         chatRepository.save(message);
         return "{\"status\" : \"Success\"}";
     }
 
-    @PostMapping("/sendChat/{userId}/voice")
-    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody VoiceMessaage message, @PathVariable("userId") String userId){
+    @PostMapping("/sendChat/{userId}/{toUserId}/voice")
+    public String postChatMessage(@RequestHeader("Authorization") String sessionID,  @RequestBody VoiceMessaage message,
+                                  @PathVariable("userId") String userId, @PathVariable("toUserId") String toUserId){
         logger.info("Session id:" + sessionID);
         logger.info("userId: " + userId);
         validateSession(Integer.valueOf(userId), sessionID);
         message.setUser_id(Integer.valueOf(userId));
+        message.setTo_user_id(Integer.valueOf(toUserId));
         chatRepository.save(message);
         return "{\"status\" : \"Success\"}";
     }

@@ -15,6 +15,7 @@ public class ChatMessage extends AuditModel{
     )
     private int id;
     private int user_id;
+    private int to_user_id;
 
     public int getId() {
         return id;
@@ -30,5 +31,13 @@ public class ChatMessage extends AuditModel{
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public int getTo_user_id() {
+        return to_user_id;
+    }
+
+    public void setTo_user_id(int to_user_id) {
+        this.to_user_id = to_user_id;
     }
 }
