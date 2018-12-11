@@ -87,3 +87,8 @@ To run the server:
 ```java --add-modules java.xml.bind -jar .\target\challenge-0.1.0.jar```
 
 The server should be running on localhost:8080. 
+
+## TODO
+1) Need to add unit/integration tests
+2) Need to figure out deployment
+3) Optimize table relationships 
